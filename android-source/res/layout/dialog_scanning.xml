@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    dialog_scanning.xml
+    ───────────────────
+    دیالوگ باتم‌شیت انیمیشن اسکن سرور.
+    نمایش پیشرفت پینگ‌گیری همه سرورها و انتخاب بهترین.
+    با BottomSheetDialogFragment استفاده می‌شود.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/bg_bottom_sheet">
+
+    <!-- هندل -->
+    <View
+        android:layout_width="36dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_handle" />
+
+    <!-- آیکون رادار + عنوان -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layoutDirection="rtl"
+        android:layout_gravity="start">
+
+        <!-- آیکون رادار چرخان -->
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp">
+
+            <ImageView
+                android:id="@+id/ic_radar_outer"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_orbit_dashed"
+                android:tint="@color/fn_accent"
+                android:alpha="0.35"
+                android:contentDescription="@null" />
+
+            <ImageView
+                android:id="@+id/ic_radar_inner"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_wifi"
+                android:tint="@color/fn_accent"
+                android:contentDescription="@null" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_scan_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/scanning_title"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/fn_ink" />
+
+            <TextView
+                android:id="@+id/tv_scan_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="در حال بررسی آلمان…"
+                android:textSize="11sp"
+                android:textColor="@color/fn_sub"
+                android:layout_marginTop="2dp"
+                tools:text="در حال بررسی آلمان…" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- نوار پیشرفت -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:trackCornerRadius="8dp"
+        app:trackThickness="8dp"
+        app:indicatorColor="@color/fn_accent"
+        app:trackColor="@color/fn_line"
+        android:progress="0"
+        android:max="100" />
+
+    <!-- شمارنده -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/tv_scan_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0 از 10 سرور بررسی شد"
+            android:textSize="10.5sp"
+            android:textColor="@color/fn_sub"
+            tools:text="3 از 10 سرور بررسی شد" />
+
+        <TextView
+            android:id="@+id/tv_scan_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textSize="10.5sp"
+            android:textStyle="bold"
+            android:textColor="@color/fn_accent"
+            android:fontFamily="monospace"
+            tools:text="30%" />
+
+    </LinearLayout>
+
+    <!-- لیست سرورهای اسکن‌شده (RecyclerView کوچک) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_scan_servers"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="12dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_scan_server" />
+
+</LinearLayout>

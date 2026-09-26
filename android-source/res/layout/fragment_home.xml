@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_home.xml
+    ─────────────────
+    صفحه اصلی (Home) — همه چیز در یک صفحه بدون اسکرول:
+    ┌──────────────────────────┐
+    │  وضعیت اتصال (pill)      │
+    │  دکمه اتصال (Power)      │
+    │  متن وضعیت + تایمر       │
+    │  [انتخاب بهترین سرور]    │
+    │  کارت سرور فعلی          │
+    │  ── دانلود | آپلود | IP ──│
+    │  [سرور نداری؟ کلیک کن]   │
+    └──────────────────────────┘
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="16dp"
+    android:background="@color/fn_snow"
+    tools:context=".HomeFragment">
+
+    <!-- ══════════════════════════════════════
+         1. وضعیت اتصال (pill badge)
+    ══════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/status_pill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="7dp"
+        android:background="@drawable/bg_pill_disconnected"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/connect_button_area"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="12dp">
+
+        <!-- نقطه وضعیت -->
+        <View
+            android:id="@+id/status_dot"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_dot_grey" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_disconnected"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="@color/fn_sub" />
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════
+         2. دکمه اصلی اتصال (Power circle)
+    ══════════════════════════════════════ -->
+    <FrameLayout
+        android:id="@+id/connect_button_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintWidth_percent="0.48"
+        app:layout_constraintTop_toBottomOf="@id/status_pill"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_status_text"
+        android:layout_marginTop="8dp">
+
+        <!-- حلقه مداری بیرونی (دَوَران) -->
+        <ImageView
+            android:id="@+id/orbit_ring_outer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_orbit_dashed"
+            android:alpha="0.35"
+            android:contentDescription="@null" />
+
+        <!-- حلقه مداری داخلی (دَوَران معکوس) -->
+        <ImageView
+            android:id="@+id/orbit_ring_inner"
+            android:layout_width="80%"
+            android:layout_height="80%"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_orbit_dots"
+            android:alpha="0.22"
+            android:contentDescription="@null" />
+
+        <!-- هاله وقتی وصل است -->
+        <View
+            android:id="@+id/halo_ring"
+            android:layout_width="70%"
+            android:layout_height="70%"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_halo_ring"
+            android:visibility="invisible" />
+
+        <!-- دکمه Power اصلی -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_connect"
+            android:layout_width="55%"
+            android:layout_height="55%"
+            android:layout_gravity="center"
+            app:cardCornerRadius="200dp"
+            app:cardElevation="16dp"
+            app:strokeWidth="0dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/fn_card">
+
+                <ImageView
+                    android:id="@+id/ic_power"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_power"
+                    android:tint="@color/fn_faint"
+                    android:contentDescription="اتصال"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+    <!-- ══════════════════════════════════════
+         3. متن وضعیت + تایمر
+    ══════════════════════════════════════ -->
+    <TextView
+        android:id="@+id/tv_status_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tap_to_connect"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/fn_ink"
+        android:gravity="center"
+        android:letterSpacing="-0.01"
+        app:layout_constraintTop_toBottomOf="@id/connect_button_area"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_auto_select"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tv_timer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/secure_motto"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:textColor="@color/fn_faint"
+        android:gravity="center"
+        android:letterSpacing="0.14"
+        android:fontFamily="monospace"
+        app:layout_constraintTop_toBottomOf="@id/tv_status_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_auto_select"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- ══════════════════════════════════════
+         4. دکمه انتخاب بهترین سرور
+    ══════════════════════════════════════ -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_auto_select"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="@string/btn_auto_select"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_gradient_accent"
+        app:cornerRadius="16dp"
+        app:strokeWidth="0dp"
+        app:icon="@drawable/ic_sparkles"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        app:iconSize="16dp"
+        app:iconPadding="8dp"
+        app:elevation="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_timer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/server_card" />
+
+    <!-- ══════════════════════════════════════
+         5. کارت سرور فعلی
+    ══════════════════════════════════════ -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/server_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/fn_line"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_auto_select"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/speed_row">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layoutDirection="rtl"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="12dp">
+
+            <!-- آواتار کشور -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/server_avatar"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <TextView
+                    android:id="@+id/tv_server_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="DE"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_gradient_server_de"
+                    android:fontFamily="sans-serif-black" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- اطلاعات سرور -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layoutDirection="rtl">
+
+                    <ImageView
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:src="@drawable/ic_map_pin"
+                        android:tint="@color/fn_faint"
+                        android:contentDescription="@null"
+                        android:layout_marginEnd="5dp" />
+
+                    <TextView
+                        android:id="@+id/tv_server_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="آلمان — فرانکفورت"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/fn_ink"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_server_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="پینگ ۴۳ ms · بار سرور ۳۲٪"
+                    android:textSize="10.5sp"
+                    android:textColor="@color/fn_sub"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+
+            <!-- فلش -->
+            <ImageView
+                android:id="@+id/server_arrow"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_chevron_left"
+                android:tint="@color/fn_sub"
+                android:background="@drawable/bg_circle_faint"
+                android:padding="8dp"
+                android:contentDescription="تغییر سرور" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ══════════════════════════════════════
+         6. ردیف آمار سرعت (دانلود | آپلود | IP)
+    ══════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/speed_row"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layoutDirection="rtl"
+        android:weightSum="3"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/server_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_no_server">
+
+        <!-- دانلود -->
+        <include
+            android:id="@+id/card_download"
+            layout="@layout/view_speed_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp" />
+
+        <!-- آپلود -->
+        <include
+            android:id="@+id/card_upload"
+            layout="@layout/view_mini_stat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp" />
+
+        <!-- IP -->
+        <include
+            android:id="@+id/card_ip"
+            layout="@layout/view_mini_stat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp" />
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════
+         7. دکمه "سرور نداری؟ کلیک کن"
+    ══════════════════════════════════════ -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_no_server"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="@string/btn_no_server"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/fn_accent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="@color/fn_accent"
+        app:strokeWidth="1.5dp"
+        app:cornerRadius="20dp"
+        app:rippleColor="@color/fn_accent"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@id/speed_row"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

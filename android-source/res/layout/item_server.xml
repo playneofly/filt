@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_server.xml
+    ───────────────
+    آیتم هر سرور در لیست ServersFragment.
+    شامل: آواتار کشور | نام + شهر | تیک انتخاب | میله‌های پینگ
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/server_item_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/fn_line">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layoutDirection="rtl"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp">
+
+        <!-- آواتار کشور -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/iv_country_avatar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
+
+            <TextView
+                android:id="@+id/tv_country_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="DE"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"
+                android:background="@drawable/bg_gradient_server_de"
+                tools:text="DE" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- اطلاعات سرور -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layoutDirection="rtl">
+
+                <TextView
+                    android:id="@+id/tv_country_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="آلمان"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/fn_ink"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="آلمان" />
+
+                <!-- تاج Premium -->
+                <ImageView
+                    android:id="@+id/ic_premium"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/ic_crown"
+                    android:tint="@color/fn_amber"
+                    android:visibility="gone"
+                    android:contentDescription="پریمیوم"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_server_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="فرانکفورت · بار سرور ۳۲٪"
+                android:textSize="10.5sp"
+                android:textColor="@color/fn_sub"
+                android:layout_marginTop="2dp"
+                tools:text="فرانکفورت · بار سرور ۳۲٪" />
+
+        </LinearLayout>
+
+        <!-- میله‌های پینگ + عدد پینگ -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center|end"
+            android:layout_marginEnd="8dp">
+
+            <!-- میله‌های سیگنال (4 عدد) -->
+            <LinearLayout
+                android:id="@+id/ping_bars"
+                android:layout_width="wrap_content"
+                android:layout_height="14dp"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:layoutDirection="ltr">
+
+                <View android:id="@+id/bar1"
+                    android:layout_width="4dp" android:layout_height="5dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/bg_bar_active" />
+                <View android:id="@+id/bar2"
+                    android:layout_width="4dp" android:layout_height="8dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/bg_bar_active" />
+                <View android:id="@+id/bar3"
+                    android:layout_width="4dp" android:layout_height="11dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/bg_bar_active" />
+                <View android:id="@+id/bar4"
+                    android:layout_width="4dp" android:layout_height="14dp"
+                    android:background="@drawable/bg_bar_inactive" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_ping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="43 ms"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/fn_mint"
+                android:fontFamily="monospace"
+                android:layout_marginTop="2dp"
+                tools:text="43 ms" />
+
+        </LinearLayout>
+
+        <!-- تیک انتخاب -->
+        <ImageView
+            android:id="@+id/ic_selected"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_check_circle"
+            android:tint="@color/fn_accent"
+            android:visibility="invisible"
+            android:contentDescription="انتخاب‌شده"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

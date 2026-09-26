@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ══════════════════════════════════════
+         تم روشن اصلی
+    ══════════════════════════════════════ -->
+    <style name="Theme.Filternet" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- رنگ‌های اصلی -->
+        <item name="colorPrimary">@color/fn_accent</item>
+        <item name="colorPrimaryVariant">@color/fn_accent_2</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/fn_mint</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- پس‌زمینه -->
+        <item name="android:windowBackground">@color/fn_snow</item>
+        <item name="android:colorBackground">@color/fn_snow</item>
+        <item name="colorSurface">@color/fn_card</item>
+        <item name="colorOnSurface">@color/fn_ink</item>
+
+        <!-- متن -->
+        <item name="android:textColorPrimary">@color/fn_ink</item>
+        <item name="android:textColorSecondary">@color/fn_sub</item>
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/fn_snow</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/fn_card</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- انیمیشن‌های پیش‌فرض -->
+        <item name="android:windowAnimationStyle">@style/WindowFadeAnimation</item>
+    </style>
+
+    <!-- ══════════════════════════════════════
+         تم تیره
+    ══════════════════════════════════════ -->
+    <style name="Theme.Filternet.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/fn_accent</item>
+        <item name="colorPrimaryVariant">@color/fn_accent_2</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/fn_mint</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="android:windowBackground">@color/fn_night</item>
+        <item name="android:colorBackground">@color/fn_night</item>
+        <item name="colorSurface">@color/fn_night_card</item>
+        <item name="colorOnSurface">@color/white</item>
+
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/fn_night_sub</item>
+
+        <item name="android:statusBarColor">@color/fn_night</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/fn_night_card</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowFadeAnimation</item>
+    </style>
+
+    <!-- ══════════════════════════════════════
+         استایل‌های کمکی
+    ══════════════════════════════════════ -->
+
+    <!-- انیمیشن fade برای Activity -->
+    <style name="WindowFadeAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <!-- Bottom Navigation -->
+    <style name="Widget.Filternet.BottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemRippleColor">@color/fn_accent</item>
+        <item name="itemIconTint">@drawable/selector_nav_item</item>
+        <item name="itemTextColor">@drawable/selector_nav_item</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="elevation">16dp</item>
+    </style>
+
+    <!-- Card تیره‌تر با گوشه گرد -->
+    <style name="Widget.Filternet.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cornerRadius">20dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/fn_line</item>
+    </style>
+
+    <!-- دکمه گرادیانی اصلی -->
+    <style name="Widget.Filternet.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/fn_accent</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <!-- Switch استایل iOS -->
+    <style name="Widget.Filternet.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/white</item>
+        <item name="trackTint">@drawable/selector_switch_track</item>
+    </style>
+</resources>

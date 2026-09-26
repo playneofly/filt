@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_scan_server.xml
+    ─────────────────────
+    آیتم هر سرور در لیست دیالوگ اسکن (ScanningBottomSheet).
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layoutDirection="rtl"
+    android:paddingHorizontal="4dp">
+
+    <!-- نام سرور -->
+    <TextView
+        android:id="@+id/tv_scan_item_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="آلمان — فرانکفورت"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/fn_ink"
+        tools:text="آلمان — فرانکفورت" />
+
+    <!-- پینگ -->
+    <TextView
+        android:id="@+id/tv_scan_item_ping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="43 ms"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:textColor="@color/fn_mint"
+        android:fontFamily="monospace"
+        android:layout_marginStart="8dp"
+        tools:text="43 ms" />
+
+    <!-- آیکون تیک -->
+    <ImageView
+        android:id="@+id/ic_scan_item_done"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_check_circle"
+        android:tint="@color/fn_mint"
+        android:layout_marginStart="8dp"
+        android:visibility="visible"
+        android:contentDescription="بررسی شد" />
+
+</LinearLayout>

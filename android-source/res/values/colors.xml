@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── برند اصلی ── -->
+    <color name="fn_accent">#4A6CF7</color>
+    <color name="fn_accent_2">#8B5CF6</color>
+    <color name="fn_mint">#10C98D</color>
+    <color name="fn_amber">#FFB020</color>
+    <color name="fn_rose">#F4557B</color>
+
+    <!-- ── پس‌زمینه تیره ── -->
+    <color name="fn_night">#0A0E19</color>
+    <color name="fn_night_card">#121828</color>
+    <color name="fn_night_line">#1E2740</color>
+    <color name="fn_night_sub">#8B93AD</color>
+
+    <!-- ── پس‌زمینه روشن ── -->
+    <color name="fn_snow">#F3F5FA</color>
+    <color name="fn_card">#FFFFFF</color>
+    <color name="fn_line">#E7EAF2</color>
+    <color name="fn_ink">#0D1220</color>
+    <color name="fn_sub">#68718A</color>
+    <color name="fn_faint">#9AA3B8</color>
+
+    <!-- ── گرادیان‌های سرور ── -->
+    <color name="server_de_start">#4A6CF7</color>
+    <color name="server_de_end">#8B5CF6</color>
+    <color name="server_nl_start">#F77062</color>
+    <color name="server_nl_end">#FE5196</color>
+    <color name="server_fr_start">#36D1DC</color>
+    <color name="server_fr_end">#5B86E5</color>
+    <color name="server_uk_start">#7F7FD5</color>
+    <color name="server_uk_end">#91EAE4</color>
+    <color name="server_sg_start">#43CEA2</color>
+    <color name="server_sg_end">#185A9D</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+</resources>

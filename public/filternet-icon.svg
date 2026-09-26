@@ -1,0 +1,74 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="64" y1="64" x2="448" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#162339"/>
+      <stop offset="1" stop-color="#0E1628"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="130" y1="118" x2="393" y2="390" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#25E4D6"/>
+      <stop offset="1" stop-color="#4A6CF7"/>
+    </linearGradient>
+    <linearGradient id="mesh" x1="148" y1="126" x2="368" y2="290" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0DD8D2"/>
+      <stop offset="1" stop-color="#2E74FF"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="171" y1="257" x2="345" y2="389" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22DDE0"/>
+      <stop offset="1" stop-color="#39A6FF"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="175" y1="258" x2="340" y2="258" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A9FFF7" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#EAFBFF" stop-opacity="0.65"/>
+    </linearGradient>
+    <filter id="softGlow" x="77" y="75" width="359" height="362" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="8" y="8" width="496" height="496" rx="96" fill="url(#bg)"/>
+  <rect x="8" y="8" width="496" height="496" rx="96" stroke="rgba(157,175,211,0.25)"/>
+
+  <g filter="url(#softGlow)">
+    <path d="M256 92C217 115 177 133 140 143C132 145 126 152 125 160C119 279 162 353 256 414C350 353 393 279 387 160C386 152 380 145 372 143C335 133 295 115 256 92Z" stroke="url(#shield)" stroke-width="26" stroke-linejoin="round"/>
+
+    <path d="M159 178C187 170 220 154 256 132C292 154 325 170 353 178C354 222 344 258 324 289H188C168 258 158 222 159 178Z" fill="#08111F"/>
+
+    <g stroke="url(#mesh)" stroke-width="2.8" stroke-linecap="round" opacity="0.9">
+      <path d="M178 194L222 172"/>
+      <path d="M222 172L256 218"/>
+      <path d="M256 218L301 187"/>
+      <path d="M301 187L341 214"/>
+      <path d="M178 194L206 232"/>
+      <path d="M206 232L256 218"/>
+      <path d="M206 232L236 270"/>
+      <path d="M236 270L288 250"/>
+      <path d="M288 250L332 248"/>
+      <path d="M301 187L288 250"/>
+      <path d="M256 218L236 270"/>
+      <path d="M222 172L186 246"/>
+      <path d="M341 214L363 180" opacity="0.5"/>
+      <path d="M332 248L363 180" opacity="0.35"/>
+    </g>
+
+    <g fill="url(#mesh)">
+      <circle cx="178" cy="194" r="12"/>
+      <circle cx="222" cy="172" r="12"/>
+      <circle cx="256" cy="218" r="12"/>
+      <circle cx="301" cy="187" r="13"/>
+      <circle cx="206" cy="232" r="10"/>
+      <circle cx="236" cy="270" r="10"/>
+      <circle cx="288" cy="250" r="11"/>
+      <circle cx="332" cy="248" r="10"/>
+      <circle cx="363" cy="180" r="9" opacity="0.35"/>
+      <circle cx="186" cy="246" r="8" opacity="0.35"/>
+    </g>
+
+    <path d="M149 258C183 278 214 289 256 292C298 289 329 278 363 258C359 283 350 311 334 336C316 365 289 385 256 408C223 385 196 365 178 336C162 311 153 283 149 258Z" fill="url(#cup)"/>
+    <path d="M176 267C201 279 225 286 256 288C287 286 311 279 336 267" stroke="url(#shine)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M256 289V406" stroke="url(#cup)" stroke-width="23" stroke-linecap="round"/>
+  </g>
+</svg>

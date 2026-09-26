@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    view_speed_card.xml
+    ────────────────────
+    کارت نمایش سرعت دانلود/آپلود با نمودار خطی.
+    در fragment_home.xml سه بار include می‌شود.
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="3dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/fn_line">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- لیبل + آیکون -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layoutDirection="rtl">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_download"
+                android:tint="@color/fn_accent"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/tv_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="دانلود"
+                android:textSize="10.5sp"
+                android:textStyle="bold"
+                android:textColor="@color/fn_sub" />
+
+        </LinearLayout>
+
+        <!-- عدد سرعت -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/fn_faint"
+                android:fontFamily="monospace" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:textColor="@color/fn_faint"
+                android:layout_marginBottom="3dp"
+                android:layout_marginStart="1dp" />
+
+        </LinearLayout>
+
+        <!-- Placeholder نمودار — با Canvas/Custom View پر می‌شود -->
+        <View
+            android:id="@+id/chart_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_chart_placeholder" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
